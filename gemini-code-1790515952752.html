@@ -1,0 +1,172 @@
+<!-- Announcement Bar -->
+<div class="bg-brand-dark text-brand-goldLight text-xs py-2 px-4 border-b border-brand-border text-center flex justify-between items-center text-opacity-90">
+  <div class="hidden md:flex items-center space-x-4 space-x-reverse">
+    <span><i class="fa-solid fa-truck-fast ml-1"></i> توصيل مجاني للإمارات لجميع الطلبات فوق 500 درهم</span>
+  </div>
+  <div class="w-full md:w-auto text-center font-medium tracking-wide">
+    <span>المجموعة الحصرية الجديدة - أسبوع أبوظبي للموضة 2026</span>
+  </div>
+  <div class="hidden md:flex items-center space-x-3 space-x-reverse text-xs">
+    <select id="currencySelector" onchange="changeCurrency(this.value)" class="bg-brand-card border border-brand-border text-brand-goldLight rounded px-2 py-0.5 outline-none cursor-pointer text-xs">
+      <option value="AED">AED (د.إ)</option>
+      <option value="SAR">SAR (ر.س)</option>
+      <option value="USD">USD ($)</option>
+    </select>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="sticky top-0 z-40 border-b border-brand-border bg-brand-main/90 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <a href="#" class="flex flex-col items-center group py-2">
+      <div class="flex items-center justify-center font-cinzel font-bold text-2xl sm:text-3xl tracking-widest text-brand-gold">
+        <span class="border-b-2 border-brand-gold pb-0.5">A</span>
+        <span class="text-brand-goldLight">B</span>
+      </div>
+      <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.3em] text-brand-goldLight mt-0.5 font-semibold">AL BATEEN</span>
+    </a>
+
+    <div class="flex items-center space-x-4 space-x-reverse">
+      <button onclick="toggleCartDrawer()" class="relative bg-brand-card text-brand-gold border border-brand-border px-4 py-2 rounded-full flex items-center gap-2">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="text-xs font-bold hidden sm:inline">السلة</span>
+        <span id="cartBadge" class="bg-brand-gold text-brand-dark font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative h-[60vh] min-h-[400px] bg-brand-dark flex items-center justify-center text-center px-4">
+  <div class="max-w-3xl z-10">
+    <span class="font-cinzel text-brand-gold tracking-[0.4em] text-xs uppercase mb-3 block">Abu Dhabi Heritage</span>
+    <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-4 font-cinzel">
+      أناقة متجددة في قلب <span class="text-brand-gold">أبوظبي</span>
+    </h1>
+    <p class="text-brand-muted text-sm sm:text-base mb-6">استكشف مجموعتنا الفاخرة من النعول الشرقية والأزياء المخصصة.</p>
+    <a href="#collections" class="inline-block bg-brand-gold text-brand-dark font-bold px-8 py-3 rounded">استكشف المجموعة</a>
+  </div>
+</section>
+
+<!-- Product Catalog -->
+<section id="collections" class="py-16 max-w-7xl mx-auto px-4">
+  <div class="text-center mb-10">
+    <h2 class="text-3xl font-bold text-white">تشكيلة النعول والأزياء</h2>
+    <div class="w-16 h-0.5 bg-brand-gold mx-auto mt-2"></div>
+  </div>
+
+  <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Rendered by JavaScript -->
+  </div>
+</section>
+
+<!-- Cart Drawer Modal -->
+<div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+  <div onclick="toggleCartDrawer()" class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+  <div class="fixed inset-y-0 left-0 max-w-full flex">
+    <div class="w-screen max-w-md bg-brand-dark border-r border-brand-border p-6 flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between border-b border-brand-border pb-4 mb-4">
+          <h3 class="text-lg font-bold text-white">سلة التسوق</h3>
+          <button onclick="toggleCartDrawer()" class="text-brand-muted hover:text-white"><i class="fa-solid fa-xmark text-xl"></i></button>
+        </div>
+        <div id="cartItemsList" class="space-y-4"></div>
+      </div>
+      <div class="border-t border-brand-border pt-4">
+        <div class="flex justify-between text-white font-bold mb-4">
+          <span>المجموع:</span>
+          <span id="cartSubtotal" class="text-brand-gold">0 د.إ</span>
+        </div>
+        <button onclick="alert('جاري التوجيه للدفع...')" class="w-full bg-brand-gold text-brand-dark font-bold py-3 rounded">إتمام الشراء</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const PRODUCTS = [
+    {
+      id: 'ab-f01',
+      title: 'نعال البتين الملكي - جلد نعام بني',
+      priceAED: 890,
+      image: 'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?auto=format&fit=crop&w=800&q=80',
+      description: 'نعال إماراتي فاخر مصنع يدوياً من أجوَد أنواع الجلد الطبيعي.'
+    },
+    {
+      id: 'ab-f02',
+      title: 'نعال البتين الكلاسيكي - أسود ملكي',
+      priceAED: 750,
+      image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80',
+      description: 'تصميم كلاسيكي متقن بجلد إيطالي طبيعي عالي الجودة.'
+    },
+    {
+      id: 'ab-01',
+      title: 'تيشيرت البتين Signature - أسود مذهب',
+      priceAED: 380,
+      image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80',
+      description: 'قطن 100% ثقيل يتزين بشعار البتين باللون الذهبي.'
+    }
+  ];
+
+  let cart = [];
+
+  function renderProducts() {
+    const grid = document.getElementById('productGrid');
+    grid.innerHTML = PRODUCTS.map(p => `
+      <div class="bg-brand-card rounded border border-brand-border p-4 flex flex-col justify-between">
+        <img src="${p.image}" class="w-full h-60 object-cover rounded mb-4">
+        <h3 class="text-white font-bold text-sm mb-1">${p.title}</h3>
+        <p class="text-brand-muted text-xs mb-3">${p.description}</p>
+        <div class="flex justify-between items-center mt-auto">
+          <span class="text-brand-gold font-bold">${p.priceAED} د.إ</span>
+          <button onclick="addToCart('${p.id}')" class="bg-brand-gold text-brand-dark px-3 py-1.5 rounded font-bold text-xs">إضافة للسلة</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function addToCart(id) {
+    const item = PRODUCTS.find(p => p.id === id);
+    cart.push(item);
+    updateCart();
+    toggleCartDrawer(true);
+  }
+
+  function updateCart() {
+    document.getElementById('cartBadge').textContent = cart.length;
+    const list = document.getElementById('cartItemsList');
+    let total = 0;
+    
+    list.innerHTML = cart.map(item => {
+      total += item.priceAED;
+      return `
+        <div class="flex justify-between items-center bg-brand-card p-2 rounded text-xs">
+          <span class="text-white font-bold">${item.title}</span>
+          <span class="text-brand-gold">${item.priceAED} د.إ</span>
+        </div>
+      `;
+    }).join('');
+
+    document.getElementById('cartSubtotal').textContent = `${total} د.إ`;
+  }
+
+  function toggleCartDrawer(forceOpen = false) {
+    const drawer = document.getElementById('cartDrawer');
+    if(forceOpen) drawer.classList.remove('hidden');
+    else drawer.classList.toggle('hidden');
+  }
+
+  window.onload = renderProducts;
+</script>
+
+{% schema %}
+{
+  "name": "Al Bateen Landing",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Al Bateen Landing"
+    }
+  ]
+}
+{% endschema %}

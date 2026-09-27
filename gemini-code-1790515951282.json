@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "albateen_main": {
+      "type": "albateen-landing"
+    }
+  },
+  "order": [
+    "albateen_main"
+  ]
+}
