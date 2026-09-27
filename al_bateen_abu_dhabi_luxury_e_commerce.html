@@ -275,13 +275,16 @@
       <span class="font-cinzel text-brand-gold tracking-[0.3em] text-xs uppercase">Exclusive Catalogue</span>
       <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1 mb-3">تشكيلة المتجر الحصرية</h2>
       <div class="w-16 h-0.5 bg-brand-gold mx-auto mb-4"></div>
-      <p class="text-brand-muted max-w-lg mx-auto text-sm">اختر من بين تشكيلاتنا الصيفية والشتوية المصممة خصيصاً لعشاق الفخامة والأناقة الهادئة.</p>
+      <p class="text-brand-muted max-w-lg mx-auto text-sm">اختر من بين تشكيلاتنا الصيفية والشتوية والنعول الفاخرة المصممة خصيصاً لعشاق الفخامة والأناقة الهادئة.</p>
     </div>
 
     <!-- Collection Filter Tabs -->
     <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12">
       <button onclick="filterProducts('all')" class="filter-btn active-filter bg-brand-gold text-brand-dark font-bold px-5 py-2 rounded-full text-xs sm:text-sm smooth-transition">
         الكل
+      </button>
+      <button onclick="filterProducts('footwear')" class="filter-btn bg-brand-card hover:border-brand-gold border border-brand-border text-brand-text px-5 py-2 rounded-full text-xs sm:text-sm smooth-transition">
+        النعول الفاخرة
       </button>
       <button onclick="filterProducts('tees')" class="filter-btn bg-brand-card hover:border-brand-gold border border-brand-border text-brand-text px-5 py-2 rounded-full text-xs sm:text-sm smooth-transition">
         تيشيرتات البتين
@@ -329,7 +332,7 @@
             استلهام من عراقة <span class="text-brand-gold">أبوظبي</span> وتصاميم حديثة
           </h2>
           <p class="text-brand-muted leading-relaxed text-sm sm:text-base">
-            كل قطعة في متجر البتين تمر بمراحل عديدة من التدقيق والاهتمام بالتفاصيل. نعمل على توفير تجربة تسوق استثنائية تبدأ من اختيار نوع الخيط والأقمشة إلى لحظة فتح العلبة المذهبة الخاصة بك.
+            كل قطعة في متجر البتين تمر بمراحل عديدة من التدقيق والاهتمام بالتفاصيل. نعمل على توفير تجربة تسوق استثنائية تبدأ من اختيار نوع الخيط والأقمشة والجلود الطبيعية لمنتجاتنا إلى لحظة فتح العلبة المذهبة الخاصة بك.
           </p>
 
           <div class="space-y-4 pt-2">
@@ -339,7 +342,7 @@
               </div>
               <div>
                 <h4 class="text-white font-bold text-sm">قصّات مخصصة وسحبة فاخرة</h4>
-                <p class="text-brand-muted text-xs mt-1">أغلب منتجاتنا مصممة بقصة Oversized مريحة وفق أحدث صيحات الموضة العالمية.</p>
+                <p class="text-brand-muted text-xs mt-1">أغلب منتجاتنا مصممة بقصة Oversized مريحة ونعول جلدية إيطالية وفق أحدث صيحات الموضة العالمية.</p>
               </div>
             </div>
 
@@ -432,7 +435,7 @@
             AL BATEEN
           </div>
           <p class="text-xs leading-relaxed">
-            علامة تجارية فاخرة في أبوظبي متخصصة في الأزياء المعاصرة بأعلى معايير الجودة والتصميم الحصري.
+            علامة تجارية فاخرة في أبوظبي متخصصة في الأزياء المعاصرة والنعول التراثية والحديثة بأعلى معايير الجودة والتصميم الحصري.
           </p>
           <div class="flex space-x-4 space-x-reverse text-brand-gold text-lg">
             <a href="https://instagram.com/albateen_.ar" target="_blank" class="hover:text-white smooth-transition"><i class="fa-brands fa-instagram"></i></a>
@@ -446,9 +449,9 @@
           <h4 class="text-white font-bold text-sm mb-4 border-b border-brand-border pb-2 inline-block">التسوق</h4>
           <ul class="space-y-2 text-xs">
             <li><a href="#collections" class="hover:text-brand-gold smooth-transition">وصلنا حديثاً</a></li>
+            <li><a href="#collections" class="hover:text-brand-gold smooth-transition">تشكيلة النعول الفاخرة</a></li>
             <li><a href="#collections" class="hover:text-brand-gold smooth-transition">التيشيرتات الأكثر مبيعاً</a></li>
             <li><a href="#signature" class="hover:text-brand-gold smooth-transition">مجموعة Signature</a></li>
-            <li><a href="#collections" class="hover:text-brand-gold smooth-transition">الستر والجاكيتات</a></li>
           </ul>
         </div>
 
@@ -458,7 +461,7 @@
           <ul class="space-y-2 text-xs">
             <li><a href="#" onclick="alert('الشحن متوفر لجميع دول الخليج خلال 2-4 أيام عمل.'); return false;" class="hover:text-brand-gold smooth-transition">سياسة الشحن والتوصيل</a></li>
             <li><a href="#" onclick="alert('يمكن الاستبدال والاسترجاع خلال 7 أيام من الاستلام.'); return false;" class="hover:text-brand-gold smooth-transition">الاستبدال والاسترجاع</a></li>
-            <li><a href="#" onclick="alert('جميع الأقمشة ذات جودة عالية ويُفضل غسلها بماء بارد.'); return false;" class="hover:text-brand-gold smooth-transition">دليل العناية بالأقمشة</a></li>
+            <li><a href="#" onclick="alert('جميع الجلود والأقمشة ذات جودة عالية ويُفضل العناية بها حسب الإرشادات.'); return false;" class="hover:text-brand-gold smooth-transition">دليل العناية بالجلود والأقمشة</a></li>
             <li><a href="#about" class="hover:text-brand-gold smooth-transition">تواصل مع الدعم الفني</a></li>
           </ul>
         </div>
@@ -548,7 +551,7 @@
     <div class="relative bg-brand-card border border-brand-border rounded-lg max-w-xl w-full p-6 z-10 shadow-2xl">
       <div class="flex items-center border-b border-brand-gold/40 pb-3">
         <i class="fa-solid fa-magnifying-glass text-brand-gold text-lg ml-3"></i>
-        <input type="text" id="searchInput" onkeyup="handleSearch(this.value)" placeholder="ابحث عن تيشيرت، سترة، خامات..." class="bg-transparent border-none text-white text-sm w-full focus:outline-none placeholder-brand-muted">
+        <input type="text" id="searchInput" onkeyup="handleSearch(this.value)" placeholder="ابحث عن نعال، تيشيرت، سترة، خامات..." class="bg-transparent border-none text-white text-sm w-full focus:outline-none placeholder-brand-muted">
         <button onclick="toggleSearchModal()" class="text-brand-muted hover:text-white"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <div id="searchResults" class="mt-4 max-h-60 overflow-y-auto space-y-2">
@@ -561,13 +564,44 @@
     /* Global Store Application Data */
     const PRODUCTS = [
       {
+        id: 'ab-f01',
+        title: 'نعال البتين الملكي - جلد نعام بني فاخر',
+        category: 'footwear',
+        priceAED: 890,
+        image: 'https://images.unsplash.com/photo-1603808033192-082d6919d3e1?auto=format&fit=crop&w=800&q=80',
+        description: 'نعال إماراتي فاخر مصنع يدوياً من أجوَد أنواع الجلد الطبيعي مع أرضية مبطنة ومريحة ورمز AB مذهب.',
+        tag: 'الأكثر طلباً',
+        sizes: ['40', '41', '42', '43', '44', '45']
+      },
+      {
+        id: 'ab-f02',
+        title: 'نعال البتين الكلاسيكي - أسود ملكي',
+        category: 'footwear',
+        priceAED: 750,
+        image: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80',
+        description: 'تصميم كلاسيكي متقن بجلد إيطالي طبيعي عالي الجودة ومطعم بتفاصيل دقيقة يدوية الصنع.',
+        tag: 'جديد',
+        sizes: ['40', '41', '42', '43', '44', '45']
+      },
+      {
+        id: 'ab-f03',
+        title: 'نعال البتين العصري - بني جملي (Camel)',
+        category: 'footwear',
+        priceAED: 820,
+        image: 'https://images.unsplash.com/photo-1560343090-f0409e92791a?auto=format&fit=crop&w=800&q=80',
+        description: 'نعال شرقي بتصميم عصري يجمع بين راحة الاستخدام اليومي والأناقة الفاخرة للزي الإماراتي.',
+        tag: 'حصري',
+        sizes: ['40', '41', '42', '43', '44', '45']
+      },
+      {
         id: 'ab-01',
         title: 'تيشيرت البتين Signature - أسود مذهب',
         category: 'tees',
         priceAED: 380,
         image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80',
         description: 'مصنوع من قطن ثقيل عالي الجودة بنسبة 100%، يتزين بشعار البتين باللون الذهبي المطفي على الصدر والظهر.',
-        tag: 'الأكثر مبيعاً'
+        tag: 'الأكثر مبيعاً',
+        sizes: ['S', 'M', 'L', 'XL']
       },
       {
         id: 'ab-02',
@@ -576,7 +610,8 @@
         priceAED: 750,
         image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80',
         description: 'سترة شتوية فاخرة مبطنة بالكامل مع سحاب معدني مذهب وتفاصيل تطريز متقنة.',
-        tag: 'حصري'
+        tag: 'حصري',
+        sizes: ['S', 'M', 'L', 'XL']
       },
       {
         id: 'ab-03',
@@ -585,7 +620,8 @@
         priceAED: 420,
         image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80',
         description: 'قصة واسعة مريحة بقماش تنفس ممتاز يضمن لك الأناقة والراحة طوال اليوم.',
-        tag: 'جديد'
+        tag: 'جديد',
+        sizes: ['S', 'M', 'L', 'XL']
       },
       {
         id: 'ab-04',
@@ -594,7 +630,8 @@
         priceAED: 220,
         image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80',
         description: 'قبعة بيسبول مطرزة بشعار العلامة بحرفية رفيعة المستوى مع شريط خلفي قابل للتعديل.',
-        tag: ''
+        tag: '',
+        sizes: ['One Size']
       },
       {
         id: 'ab-05',
@@ -603,7 +640,8 @@
         priceAED: 620,
         image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80',
         description: 'هودي ثقيل ببطانة داخلية ناعمة، يضمن لك الدفء المظهر الفاخر في المواسم الباردة.',
-        tag: 'موصى به'
+        tag: 'موصى به',
+        sizes: ['S', 'M', 'L', 'XL']
       },
       {
         id: 'ab-06',
@@ -612,7 +650,8 @@
         priceAED: 390,
         image: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=800&q=80',
         description: 'تصميم يجمع بين درجة الأوف وايت الفاخرة والطبعة المذهبة الأيقونية.',
-        tag: ''
+        tag: '',
+        sizes: ['S', 'M', 'L', 'XL']
       },
       {
         id: 'ab-07',
@@ -621,7 +660,8 @@
         priceAED: 480,
         image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80',
         description: 'جلد طبيعي فاخر ببطانة ناعمة مع تفاصيل مذهبة، مثالية للمقتنيات اليومية.',
-        tag: 'محدود'
+        tag: 'محدود',
+        sizes: ['One Size']
       },
       {
         id: 'ab-08',
@@ -630,7 +670,8 @@
         priceAED: 690,
         image: 'https://images.unsplash.com/photo-1495105787522-5334e3ffa0ef?auto=format&fit=crop&w=800&q=80',
         description: 'سترة خفيفة الوزن للمواسم الانتقالية، تتميز بأزرار مذهبة وتصميم عصري متقن.',
-        tag: ''
+        tag: '',
+        sizes: ['S', 'M', 'L', 'XL']
       }
     ];
 
@@ -662,6 +703,7 @@
 
       filtered.forEach(p => {
         const isWishlist = wishlist.includes(p.id);
+        const defaultSize = p.sizes ? p.sizes[0] : 'M';
         const cardHtml = `
           <div class="product-card group bg-brand-card rounded border border-brand-border overflow-hidden flex flex-col justify-between smooth-transition gold-glow">
             <div class="relative aspect-[4/5] overflow-hidden bg-brand-dark cursor-pointer" onclick="openQuickView('${p.id}')">
@@ -684,10 +726,10 @@
               <div>
                 <div class="flex justify-between items-center mb-3">
                   <span class="text-brand-goldLight font-bold text-base">${formatPrice(p.priceAED)}</span>
-                  <span class="text-[10px] text-brand-muted">مقاسات: S, M, L, XL</span>
+                  <span class="text-[10px] text-brand-muted">المقاسات: ${p.sizes ? p.sizes.join(', ') : 'متعددة'}</span>
                 </div>
 
-                <button onclick="addToCart('${p.id}', 'M')" class="w-full bg-brand-dark hover:bg-brand-gold text-brand-gold hover:text-brand-dark border border-brand-border hover:border-brand-gold font-bold py-2 rounded text-xs smooth-transition flex items-center justify-center gap-2">
+                <button onclick="addToCart('${p.id}', '${defaultSize}')" class="w-full bg-brand-dark hover:bg-brand-gold text-brand-gold hover:text-brand-dark border border-brand-border hover:border-brand-gold font-bold py-2 rounded text-xs smooth-transition flex items-center justify-center gap-2">
                   <i class="fa-solid fa-plus"></i> إضافة للسلة
                 </button>
               </div>
@@ -722,7 +764,7 @@
     }
 
     /* Add to Cart Logic */
-    function addToCart(id, size = 'M') {
+    function addToCart(id, size = '42') {
       const existingIndex = cart.findIndex(item => item.id === id && item.size === size);
       if (existingIndex > -1) {
         cart[existingIndex].qty += 1;
@@ -819,6 +861,12 @@
     function openQuickView(id) {
       const p = PRODUCTS.find(item => item.id === id);
       const content = document.getElementById('quickViewContent');
+      const sizesList = p.sizes || ['S', 'M', 'L', 'XL'];
+      
+      let sizeButtonsHtml = sizesList.map((size, idx) => `
+        <button onclick="selectSize(this)" class="size-btn border ${idx === 0 ? 'border-brand-gold bg-brand-gold text-brand-dark' : 'border-brand-border hover:border-brand-gold text-white'} font-bold text-xs px-3 py-1.5 rounded">${size}</button>
+      `).join('');
+
       content.innerHTML = `
         <div class="aspect-square bg-brand-dark rounded overflow-hidden">
           <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
@@ -832,11 +880,8 @@
             
             <div class="mb-6">
               <label class="block text-xs font-bold text-white mb-2">اختر المقاس:</label>
-              <div class="flex gap-2" id="sizeSelector">
-                <button onclick="selectSize(this)" class="size-btn border border-brand-gold bg-brand-gold text-brand-dark font-bold text-xs w-9 h-9 rounded">S</button>
-                <button onclick="selectSize(this)" class="size-btn border border-brand-border hover:border-brand-gold text-white font-bold text-xs w-9 h-9 rounded">M</button>
-                <button onclick="selectSize(this)" class="size-btn border border-brand-border hover:border-brand-gold text-white font-bold text-xs w-9 h-9 rounded">L</button>
-                <button onclick="selectSize(this)" class="size-btn border border-brand-border hover:border-brand-gold text-white font-bold text-xs w-9 h-9 rounded">XL</button>
+              <div class="flex flex-wrap gap-2" id="sizeSelector">
+                ${sizeButtonsHtml}
               </div>
             </div>
           </div>
@@ -846,7 +891,7 @@
           </button>
         </div>
       `;
-      window.selectedSize = 'S';
+      window.selectedSize = sizesList[0];
       document.getElementById('quickViewModal').classList.remove('hidden');
     }
 
@@ -856,7 +901,7 @@
         b.classList.add('border-brand-border', 'text-white');
       });
       btn.classList.add('bg-brand-gold', 'text-brand-dark', 'border-brand-gold');
-      window.selectedSize = btn.textContent;
+      window.selectedSize = btn.textContent.trim();
     }
 
     function closeQuickView() {
