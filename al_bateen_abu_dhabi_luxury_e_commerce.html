@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AL BATEEN - ABU DHABI | الفخامة والأناقة</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#1c110e',       /* Deepest espresso */
+              main: '#231612',       /* Main background */
+              card: '#2d1d18',       /* Elevated surfaces */
+              gold: '#d4a373',       /* Primary gold accent */
+              goldLight: '#e6c594',  /* Lighter gold accent */
+              goldDark: '#9e7247',   /* Dark gold accent */
+              text: '#f8f5f0',       /* Off-white text */
+              muted: '#b3a59e',      /* Secondary text */
+              border: 'rgba(212, 163, 115, 0.2)'
+            }
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            playfair: ['Playfair Display', 'serif'],
+            tajawal: ['Tajawal', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1c110e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #9e7247;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d4a373;
+    }
+
+    /* Subtle Glassmorphism */
+    .glass-header {
+      background: rgba(35, 22, 18, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    
+    .glass-card {
+      background: rgba(45, 29, 24, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(212, 163, 115, 0.18);
+    }
+
+    /* Glow Effects */
+    .gold-glow:hover {
+      box-shadow: 0 0 25px rgba(212, 163, 115, 0.25);
+    }
+
+    .gold-border-glow {
+      border-color: rgba(212, 163, 115, 0.6);
+      box-shadow: 0 0 15px rgba(212, 163, 115, 0.2);
+    }
+
+    /* Hero Text Shimmer */
+    .gold-shimmer {
+      background: linear-gradient(135deg, #d4a373 0%, #fff3e0 50%, #e6c594 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Transitions */
+    .smooth-transition {
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+<body class="bg-brand-main text-brand-text font-tajawal min-h-screen flex flex-col selection:bg-brand-gold selection:text-brand-dark overflow-x-hidden">
+
+  <!-- Announcement Bar -->
+  <div class="bg-brand-dark text-brand-goldLight text-xs py-2 px-4 border-b border-brand-border text-center flex justify-between items-center text-opacity-90">
+    <div class="hidden md:flex items-center space-x-4 space-x-reverse">
+      <span><i class="fa-solid fa-truck-fast ml-1"></i> توصيل مجاني للإمارات لجميع الطلبات فوق 500 درهم</span>
+    </div>
+    <div class="w-full md:w-auto text-center font-medium tracking-wide">
+      <span>المجموعة الحصرية الجديدة - أسبوع أبوظبي للموضة 2026</span>
+    </div>
+    <div class="hidden md:flex items-center space-x-3 space-x-reverse text-xs">
+      <!-- Currency Switcher -->
+      <select id="currencySelector" onchange="changeCurrency(this.value)" class="bg-brand-card border border-brand-border text-brand-goldLight rounded px-2 py-0.5 outline-none cursor-pointer text-xs">
+        <option value="AED">AED (د.إ)</option>
+        <option value="SAR">SAR (ر.س)</option>
+        <option value="USD">USD ($)</option>
+      </select>
+      <!-- Language Switcher -->
+      <button onclick="toggleLanguage()" id="langToggleBtn" class="text-brand-gold hover:text-white transition">
+        English
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="glass-header sticky top-0 z-40 border-b border-brand-border smooth-transition">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Mobile Menu Button -->
+      <div class="flex items-center lg:hidden">
+        <button onclick="toggleMobileMenu()" class="text-brand-gold text-xl p-2 focus:outline-none">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+
+      <!-- Navigation Links (Desktop) -->
+      <nav class="hidden lg:flex items-center space-x-8 space-x-reverse text-sm font-medium">
+        <a href="#hero" class="hover:text-brand-gold smooth-transition active-nav" data-i18n="nav-home">الرئيسية</a>
+        <a href="#collections" class="hover:text-brand-gold smooth-transition" data-i18n="nav-collections">المجموعات</a>
+        <a href="#signature" class="hover:text-brand-gold smooth-transition" data-i18n="nav-signature">خط البتين المتميز</a>
+        <a href="#packaging" class="hover:text-brand-gold smooth-transition" data-i18n="nav-craft">التغليف والتراث</a>
+        <a href="#about" class="hover:text-brand-gold smooth-transition" data-i18n="nav-about">عن العلامة</a>
+      </nav>
+
+      <!-- Brand Logo -->
+      <a href="#" class="flex flex-col items-center group py-2">
+        <div class="flex items-center justify-center font-cinzel font-bold text-2xl sm:text-3xl tracking-widest text-brand-gold group-hover:scale-105 smooth-transition">
+          <span class="border-b-2 border-brand-gold pb-0.5">A</span>
+          <span class="text-brand-goldLight">B</span>
+        </div>
+        <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.3em] text-brand-goldLight mt-0.5 font-semibold">AL BATEEN</span>
+        <span class="font-cinzel text-[8px] tracking-[0.2em] text-brand-muted opacity-80">- ABU DHABI -</span>
+      </a>
+
+      <!-- Right Header Actions -->
+      <div class="flex items-center space-x-4 sm:space-x-6 space-x-reverse">
+        
+        <!-- Search Trigger -->
+        <button onclick="toggleSearchModal()" class="text-brand-text hover:text-brand-gold smooth-transition text-lg p-1" title="بحث">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <!-- Wishlist Icon -->
+        <button onclick="openWishlistModal()" class="relative text-brand-text hover:text-brand-gold smooth-transition text-lg p-1" title="المفضلة">
+          <i class="fa-regular fa-heart"></i>
+          <span id="wishlistBadge" class="hidden absolute -top-1.5 -right-2 bg-brand-gold text-brand-dark font-bold text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+        </button>
+
+        <!-- Shopping Cart Button -->
+        <button onclick="toggleCartDrawer()" class="relative bg-brand-card hover:bg-brand-gold hover:text-brand-dark text-brand-gold border border-brand-border px-3 sm:px-4 py-2 rounded-full flex items-center gap-2 smooth-transition gold-glow">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="text-xs font-bold hidden sm:inline" data-i18n="cart-btn">السلة</span>
+          <span id="cartBadge" class="bg-brand-gold text-brand-dark font-bold text-xs w-5 h-5 rounded-full flex items-center justify-center">0</span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobileMenu" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden transition-opacity duration-300">
+    <div class="w-4/5 max-w-sm bg-brand-dark h-full p-6 flex flex-col justify-between border-l border-brand-border shadow-2xl">
+      <div>
+        <div class="flex justify-between items-center border-b border-brand-border pb-4 mb-6">
+          <div class="text-brand-gold font-cinzel font-bold text-xl">AL BATEEN</div>
+          <button onclick="toggleMobileMenu()" class="text-brand-muted hover:text-white text-2xl">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <nav class="flex flex-col space-y-4 font-medium text-lg">
+          <a href="#hero" onclick="toggleMobileMenu()" class="text-brand-gold hover:text-white py-1">الرئيسية</a>
+          <a href="#collections" onclick="toggleMobileMenu()" class="hover:text-brand-gold py-1">المجموعات</a>
+          <a href="#signature" onclick="toggleMobileMenu()" class="hover:text-brand-gold py-1">خط البتين المتميز</a>
+          <a href="#packaging" onclick="toggleMobileMenu()" class="hover:text-brand-gold py-1">التغليف والتراث</a>
+          <a href="#about" onclick="toggleMobileMenu()" class="hover:text-brand-gold py-1">عن العلامة</a>
+        </nav>
+      </div>
+      
+      <div class="border-t border-brand-border pt-4 flex flex-col gap-3">
+        <div class="flex justify-between items-center text-sm">
+          <span>العملة:</span>
+          <select onchange="changeCurrency(this.value)" class="bg-brand-card border border-brand-border text-brand-goldLight rounded px-2 py-1 text-xs">
+            <option value="AED">AED (د.إ)</option>
+            <option value="SAR">SAR (ر.س)</option>
+            <option value="USD">USD ($)</option>
+          </select>
+        </div>
+        <a href="https://instagram.com/albateen_.ar" target="_blank" class="flex items-center justify-center gap-2 text-sm bg-brand-card border border-brand-border text-brand-gold py-2 rounded">
+          <i class="fa-brands fa-instagram"></i> @albateen_.ar
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Carousel Section -->
+  <section id="hero" class="relative h-[82vh] min-h-[550px] overflow-hidden bg-brand-dark">
+    
+    <!-- Slide 1 -->
+    <div class="hero-slide absolute inset-0 opacity-100 transition-opacity duration-1000 ease-in-out">
+      <div class="absolute inset-0 bg-gradient-to-t from-brand-main via-brand-main/40 to-black/60 z-10"></div>
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1800&q=85" alt="Al Bateen Luxury Collection" class="w-full h-full object-cover object-center transform scale-105 transition-transform duration-10000">
+      
+      <div class="absolute inset-0 z-20 flex items-center justify-center text-center px-4">
+        <div class="max-w-3xl">
+          <span class="inline-block font-cinzel text-brand-gold tracking-[0.4em] text-xs sm:text-sm uppercase mb-3 border-b border-brand-gold/40 pb-1">Abu Dhabi Heritage & Modern Fashion</span>
+          <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight font-cinzel">
+            أناقة متجددة في قلب <span class="gold-shimmer">أبوظبي</span>
+          </h1>
+          <p class="text-brand-muted text-base sm:text-lg mb-8 max-w-xl mx-auto font-light leading-relaxed">
+            استكشف مجموعتنا الفاخرة التي تجمع بين حداثة التصميم المعاصر والأصالة العربية العريقة.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#collections" class="w-full sm:w-auto bg-brand-gold hover:bg-brand-goldLight text-brand-dark font-bold px-8 py-3.5 rounded smooth-transition shadow-lg gold-glow">
+              استكشف المجموعة
+            </a>
+            <a href="#signature" class="w-full sm:w-auto border border-brand-gold text-brand-goldLight hover:bg-brand-gold/10 font-medium px-8 py-3.5 rounded smooth-transition">
+              خط البتين الخاص
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Brand Highlights Banner -->
+  <section class="border-y border-brand-border bg-brand-card/40 py-8">
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="flex flex-col items-center">
+        <i class="fa-solid fa-gem text-brand-gold text-2xl mb-2"></i>
+        <h4 class="font-bold text-sm text-brand-goldLight">أقمشة فاخرة 100%</h4>
+        <p class="text-xs text-brand-muted mt-1">قطن ياباني صلب وخامات عالية الجودة</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="font-cinzel text-brand-gold font-bold text-xl mb-1">AB</div>
+        <h4 class="font-bold text-sm text-brand-goldLight">تصاميم موثقة</h4>
+        <p class="text-xs text-brand-muted mt-1">قطع محدودة الإصدار بحرفية عالية</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <i class="fa-solid fa-box-open text-brand-gold text-2xl mb-2"></i>
+        <h4 class="font-bold text-sm text-brand-goldLight">تغليف فاخر حصري</h4>
+        <p class="text-xs text-brand-muted mt-1">علبة تقديم سوداء مذهبة لكل طلب</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <i class="fa-solid fa-shield-halved text-brand-gold text-2xl mb-2"></i>
+        <h4 class="font-bold text-sm text-brand-goldLight">دفع آمن وسريع</h4>
+        <p class="text-xs text-brand-muted mt-1">بطاقات ائتمان، Apple Pay، والدفع عند الاستلام</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Collections Catalog -->
+  <section id="collections" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <span class="font-cinzel text-brand-gold tracking-[0.3em] text-xs uppercase">Exclusive Catalogue</span>
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mt-1 mb-3">تشكيلة المتجر الحصرية</h2>
+      <div class="w-16 h-0.5 bg-brand-gold mx-auto mb-4"></div>
+      <p class="text-brand-muted max-w-lg mx-auto text-sm">اختر من بين تشكيلاتنا الصيفية والشتوية المصممة خصيصاً لعشاق الفخامة والأناقة الهادئة.</p>
+    </div>
+
+    <!-- Collection Filter Tabs -->
+    <div class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-12">
+      <button onclick="filterProducts('all')" class="filter-btn active-filter bg-brand-gold text-brand-dark font-bold px-5 py-2 rounded-full text-xs sm:text-sm smooth-transition">
+        الكل
+      </button>
+      <button onclick="filterProducts('tees')" class="filter-btn bg-brand-card hover:border-brand-gold border border-brand-border text-brand-text px-5 py-2 rounded-full text-xs sm:text-sm smooth-transition">
+        تيشيرتات البتين
+      </button>
+      <button onclick="filterProducts('outerwear')" class="filter-btn bg-brand-card hover:border-brand-gold border border-brand-border text-brand-text px-5 py-2 rounded-full text-xs sm:text-sm smooth-transition">
+        جاكيتات وستر
+      </button>
+      <button onclick="filterProducts('signature')" class="filter-btn bg-brand-card hover:border-brand-gold border border-brand-border text-brand-text px-5 py-2 rounded-full text-xs sm:text-sm smooth-transition">
+        مجموعة Signature
+      </button>
+      <button onclick="filterProducts('accessories')" class="filter-btn bg-brand-card hover:border-brand-gold border border-brand-border text-brand-text px-5 py-2 rounded-full text-xs sm:text-sm smooth-transition">
+        إكسسوارات فاخرة
+      </button>
+    </div>
+
+    <!-- Product Grid Container -->
+    <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      <!-- Products dynamically injected via JavaScript below -->
+    </div>
+
+  </section>
+
+  <!-- Luxury Packaging & Abu Dhabi Heritage Section -->
+  <section id="packaging" class="py-20 border-y border-brand-border bg-gradient-to-b from-brand-card/30 to-brand-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        
+        <!-- Left Banner Image Display -->
+        <div class="relative group">
+          <div class="absolute -inset-1 bg-gradient-to-r from-brand-gold to-brand-goldLight rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+          <div class="relative rounded-lg overflow-hidden border border-brand-border">
+            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=1000&q=80" alt="Unboxing Al Bateen Experience" class="w-full h-[420px] object-cover transform group-hover:scale-105 smooth-transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-80"></div>
+            <div class="absolute bottom-6 right-6 left-6">
+              <span class="font-cinzel text-brand-gold text-xs tracking-widest uppercase">The Unboxing Experience</span>
+              <h3 class="text-xl font-bold text-white mt-1">تغليف فاخر يليق بإسم "البطين"</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Description Content -->
+        <div class="space-y-6">
+          <span class="font-cinzel text-brand-gold tracking-[0.3em] text-xs uppercase">Heritage & Quality</span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white leading-tight">
+            استلهام من عراقة <span class="text-brand-gold">أبوظبي</span> وتصاميم حديثة
+          </h2>
+          <p class="text-brand-muted leading-relaxed text-sm sm:text-base">
+            كل قطعة في متجر البتين تمر بمراحل عديدة من التدقيق والاهتمام بالتفاصيل. نعمل على توفير تجربة تسوق استثنائية تبدأ من اختيار نوع الخيط والأقمشة إلى لحظة فتح العلبة المذهبة الخاصة بك.
+          </p>
+
+          <div class="space-y-4 pt-2">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-brand-card border border-brand-border flex items-center justify-center text-brand-gold shrink-0">
+                <i class="fa-solid fa-scissors"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold text-sm">قصّات مخصصة وسحبة فاخرة</h4>
+                <p class="text-brand-muted text-xs mt-1">أغلب منتجاتنا مصممة بقصة Oversized مريحة وفق أحدث صيحات الموضة العالمية.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-brand-card border border-brand-border flex items-center justify-center text-brand-gold shrink-0">
+                <i class="fa-solid fa-stamp"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold text-sm">رمز الأصالة والشعار المذهب</h4>
+                <p class="text-brand-muted text-xs mt-1">رمز AB الأيقوني يزين كافة تصاميمنا بلمسة ناعمة وأنيقة.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <a href="#collections" class="inline-flex items-center gap-2 border-b-2 border-brand-gold text-brand-goldLight font-bold pb-1 hover:text-white hover:border-white smooth-transition">
+              تصفح التشكيلة الكاملة <i class="fa-solid fa-arrow-left text-xs"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram Feed Showcase Section -->
+  <section id="about" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10">
+      <a href="https://instagram.com/albateen_.ar" target="_blank" class="inline-flex items-center gap-2 text-brand-gold hover:text-brand-goldLight text-sm font-bold tracking-widest uppercase mb-2">
+        <i class="fa-brands fa-instagram text-lg"></i> @albateen_.ar
+      </a>
+      <h2 class="text-3xl font-bold text-white">مجتمع البتين على انستغرام</h2>
+      <p class="text-brand-muted text-xs sm:text-sm mt-1">شاركونا إطلالاتكم باستخدام التاق #AlBateenStyle</p>
+    </div>
+
+    <!-- Instagram Grid Mock -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <a href="https://instagram.com/albateen_.ar" target="_blank" class="group relative aspect-square overflow-hidden rounded border border-brand-border bg-brand-card">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80" alt="Instagram Post" class="w-full h-full object-cover group-hover:scale-110 smooth-transition duration-500">
+        <div class="absolute inset-0 bg-brand-dark/70 opacity-0 group-hover:opacity-100 smooth-transition flex items-center justify-center text-brand-gold">
+          <i class="fa-brands fa-instagram text-3xl"></i>
+        </div>
+      </a>
+      <a href="https://instagram.com/albateen_.ar" target="_blank" class="group relative aspect-square overflow-hidden rounded border border-brand-border bg-brand-card">
+        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80" alt="Instagram Post" class="w-full h-full object-cover group-hover:scale-110 smooth-transition duration-500">
+        <div class="absolute inset-0 bg-brand-dark/70 opacity-0 group-hover:opacity-100 smooth-transition flex items-center justify-center text-brand-gold">
+          <i class="fa-brands fa-instagram text-3xl"></i>
+        </div>
+      </a>
+      <a href="https://instagram.com/albateen_.ar" target="_blank" class="group relative aspect-square overflow-hidden rounded border border-brand-border bg-brand-card">
+        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=80" alt="Instagram Post" class="w-full h-full object-cover group-hover:scale-110 smooth-transition duration-500">
+        <div class="absolute inset-0 bg-brand-dark/70 opacity-0 group-hover:opacity-100 smooth-transition flex items-center justify-center text-brand-gold">
+          <i class="fa-brands fa-instagram text-3xl"></i>
+        </div>
+      </a>
+      <a href="https://instagram.com/albateen_.ar" target="_blank" class="group relative aspect-square overflow-hidden rounded border border-brand-border bg-brand-card">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&q=80" alt="Instagram Post" class="w-full h-full object-cover group-hover:scale-110 smooth-transition duration-500">
+        <div class="absolute inset-0 bg-brand-dark/70 opacity-0 group-hover:opacity-100 smooth-transition flex items-center justify-center text-brand-gold">
+          <i class="fa-brands fa-instagram text-3xl"></i>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- VIP Newsletter Section -->
+  <section class="bg-brand-card/60 border-t border-brand-border py-16">
+    <div class="max-w-4xl mx-auto text-center px-4">
+      <span class="font-cinzel text-brand-gold tracking-[0.3em] text-xs uppercase">Exclusive Access</span>
+      <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1 mb-2">انضم لنادي البتين الخاص (VIP)</h2>
+      <p class="text-brand-muted text-xs sm:text-sm mb-6 max-w-md mx-auto">احصل على إشعارات مسبقة للقطع المحدودة والتشكيلات الجديدة وخصومات خاصة للأعضاء فقط.</p>
+
+      <form onsubmit="handleNewsletter(event)" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input type="email" required placeholder="أدخل بريدك الإلكتروني..." class="bg-brand-dark border border-brand-border rounded px-4 py-3 text-sm text-white placeholder-brand-muted focus:outline-none focus:border-brand-gold flex-grow">
+        <button type="submit" class="bg-brand-gold hover:bg-brand-goldLight text-brand-dark font-bold px-6 py-3 rounded text-sm smooth-transition shrink-0 gold-glow">
+          اشتراك
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Luxury Footer -->
+  <footer class="bg-brand-dark text-brand-muted border-t border-brand-border pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        
+        <!-- Brand Info -->
+        <div class="space-y-4">
+          <div class="flex items-center font-cinzel font-bold text-2xl text-brand-gold">
+            AL BATEEN
+          </div>
+          <p class="text-xs leading-relaxed">
+            علامة تجارية فاخرة في أبوظبي متخصصة في الأزياء المعاصرة بأعلى معايير الجودة والتصميم الحصري.
+          </p>
+          <div class="flex space-x-4 space-x-reverse text-brand-gold text-lg">
+            <a href="https://instagram.com/albateen_.ar" target="_blank" class="hover:text-white smooth-transition"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="hover:text-white smooth-transition"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#" class="hover:text-white smooth-transition"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Links Quick Menu -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-4 border-b border-brand-border pb-2 inline-block">التسوق</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#collections" class="hover:text-brand-gold smooth-transition">وصلنا حديثاً</a></li>
+            <li><a href="#collections" class="hover:text-brand-gold smooth-transition">التيشيرتات الأكثر مبيعاً</a></li>
+            <li><a href="#signature" class="hover:text-brand-gold smooth-transition">مجموعة Signature</a></li>
+            <li><a href="#collections" class="hover:text-brand-gold smooth-transition">الستر والجاكيتات</a></li>
+          </ul>
+        </div>
+
+        <!-- Customer Care -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-4 border-b border-brand-border pb-2 inline-block">خدمة العملاء</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#" onclick="alert('الشحن متوفر لجميع دول الخليج خلال 2-4 أيام عمل.'); return false;" class="hover:text-brand-gold smooth-transition">سياسة الشحن والتوصيل</a></li>
+            <li><a href="#" onclick="alert('يمكن الاستبدال والاسترجاع خلال 7 أيام من الاستلام.'); return false;" class="hover:text-brand-gold smooth-transition">الاستبدال والاسترجاع</a></li>
+            <li><a href="#" onclick="alert('جميع الأقمشة ذات جودة عالية ويُفضل غسلها بماء بارد.'); return false;" class="hover:text-brand-gold smooth-transition">دليل العناية بالأقمشة</a></li>
+            <li><a href="#about" class="hover:text-brand-gold smooth-transition">تواصل مع الدعم الفني</a></li>
+          </ul>
+        </div>
+
+        <!-- Location & Contact -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-4 border-b border-brand-border pb-2 inline-block">المقر الرئيسي</h4>
+          <ul class="space-y-2 text-xs">
+            <li class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-gold"></i> أبوظبي، الإمارات العربية المتحدة</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-envelope text-brand-gold"></i> support@albateen.ae</li>
+            <li class="flex items-center gap-2"><i class="fa-solid fa-phone text-brand-gold"></i> +971 50 000 0000</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Copyright & Payment Icons -->
+      <div class="border-t border-brand-border pt-6 flex flex-col sm:flex-row items-center justify-between text-xs gap-4">
+        <p>&copy; 2026 AL BATEEN - ABU DHABI. جميع الحقوق محفوظة.</p>
+        <div class="flex gap-3 text-brand-muted text-lg">
+          <i class="fa-brands fa-cc-visa hover:text-white" title="Visa"></i>
+          <i class="fa-brands fa-cc-mastercard hover:text-white" title="Mastercard"></i>
+          <i class="fa-brands fa-apple-pay hover:text-white text-2xl" title="Apple Pay"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer (Side Modal) -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+    <!-- Backdrop -->
+    <div onclick="toggleCartDrawer()" class="absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity"></div>
+
+    <div class="fixed inset-y-0 left-0 max-w-full flex">
+      <div class="w-screen max-w-md bg-brand-dark border-r border-brand-border shadow-2xl flex flex-col justify-between">
+        
+        <!-- Cart Header -->
+        <div class="p-6 border-b border-brand-border flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-bag-shopping text-brand-gold text-xl"></i>
+            <h3 class="text-lg font-bold text-white">سلة التسوق</h3>
+            <span id="cartDrawerCount" class="text-xs bg-brand-card text-brand-gold px-2 py-0.5 rounded-full border border-brand-border">(0)</span>
+          </div>
+          <button onclick="toggleCartDrawer()" class="text-brand-muted hover:text-white text-xl">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cartItemsList" class="p-6 overflow-y-auto flex-1 space-y-4">
+          <!-- Cart items render dynamically here -->
+        </div>
+
+        <!-- Cart Footer -->
+        <div class="p-6 border-t border-brand-border bg-brand-card/40 space-y-4">
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-brand-muted">المجموع الفرعي:</span>
+            <span id="cartSubtotal" class="text-lg font-bold text-brand-goldLight">0 د.إ</span>
+          </div>
+          <p class="text-[11px] text-brand-muted">الشحن والضرائب يتم حسابها عند إتمام الطلب.</p>
+          <button onclick="proceedToCheckout()" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-dark font-bold py-3 rounded text-sm smooth-transition gold-glow flex items-center justify-center gap-2">
+            إتمام الشراء الآن <i class="fa-solid fa-arrow-left"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick View Modal -->
+  <div id="quickViewModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div onclick="closeQuickView()" class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+    <div class="relative bg-brand-card border border-brand-border rounded-lg max-w-3xl w-full p-6 overflow-hidden z-10 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <button onclick="closeQuickView()" class="absolute top-4 left-4 text-brand-muted hover:text-white text-xl z-10">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div id="quickViewContent" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div id="searchModal" class="fixed inset-0 z-50 hidden flex items-start justify-center pt-20 px-4">
+    <div onclick="toggleSearchModal()" class="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+    <div class="relative bg-brand-card border border-brand-border rounded-lg max-w-xl w-full p-6 z-10 shadow-2xl">
+      <div class="flex items-center border-b border-brand-gold/40 pb-3">
+        <i class="fa-solid fa-magnifying-glass text-brand-gold text-lg ml-3"></i>
+        <input type="text" id="searchInput" onkeyup="handleSearch(this.value)" placeholder="ابحث عن تيشيرت، سترة، خامات..." class="bg-transparent border-none text-white text-sm w-full focus:outline-none placeholder-brand-muted">
+        <button onclick="toggleSearchModal()" class="text-brand-muted hover:text-white"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="searchResults" class="mt-4 max-h-60 overflow-y-auto space-y-2">
+        <p class="text-xs text-brand-muted text-center py-4">ابحث عن اسم المنتج أو التصميم...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* Global Store Application Data */
+    const PRODUCTS = [
+      {
+        id: 'ab-01',
+        title: 'تيشيرت البتين Signature - أسود مذهب',
+        category: 'tees',
+        priceAED: 380,
+        image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80',
+        description: 'مصنوع من قطن ثقيل عالي الجودة بنسبة 100%، يتزين بشعار البتين باللون الذهبي المطفي على الصدر والظهر.',
+        tag: 'الأكثر مبيعاً'
+      },
+      {
+        id: 'ab-02',
+        title: 'سترة البتين الميدانية - بني دافئ',
+        category: 'outerwear',
+        priceAED: 750,
+        image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80',
+        description: 'سترة شتوية فاخرة مبطنة بالكامل مع سحاب معدني مذهب وتفاصيل تطريز متقنة.',
+        tag: 'حصري'
+      },
+      {
+        id: 'ab-03',
+        title: 'تيشيرت أبوظبي Heritage Oversized',
+        category: 'signature',
+        priceAED: 420,
+        image: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80',
+        description: 'قصة واسعة مريحة بقماش تنفس ممتاز يضمن لك الأناقة والراحة طوال اليوم.',
+        tag: 'جديد'
+      },
+      {
+        id: 'ab-04',
+        title: 'قبعة البتين الكلاسيكية - بني ذهبي',
+        category: 'accessories',
+        priceAED: 220,
+        image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80',
+        description: 'قبعة بيسبول مطرزة بشعار العلامة بحرفية رفيعة المستوى مع شريط خلفي قابل للتعديل.',
+        tag: ''
+      },
+      {
+        id: 'ab-05',
+        title: 'هودي البتين الملكي - بني غامق',
+        category: 'outerwear',
+        priceAED: 620,
+        image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=80',
+        description: 'هودي ثقيل ببطانة داخلية ناعمة، يضمن لك الدفء المظهر الفاخر في المواسم الباردة.',
+        tag: 'موصى به'
+      },
+      {
+        id: 'ab-06',
+        title: 'تيشيرت البتين أوف وايت - طبعة التراث',
+        category: 'tees',
+        priceAED: 390,
+        image: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?auto=format&fit=crop&w=800&q=80',
+        description: 'تصميم يجمع بين درجة الأوف وايت الفاخرة والطبعة المذهبة الأيقونية.',
+        tag: ''
+      },
+      {
+        id: 'ab-07',
+        title: 'حقيبة جلدية صغيرة لحفظ المقتنيات',
+        category: 'accessories',
+        priceAED: 480,
+        image: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=80',
+        description: 'جلد طبيعي فاخر ببطانة ناعمة مع تفاصيل مذهبة، مثالية للمقتنيات اليومية.',
+        tag: 'محدود'
+      },
+      {
+        id: 'ab-08',
+        title: 'سترة البتين الكاجوال الخفيفة',
+        category: 'signature',
+        priceAED: 690,
+        image: 'https://images.unsplash.com/photo-1495105787522-5334e3ffa0ef?auto=format&fit=crop&w=800&q=80',
+        description: 'سترة خفيفة الوزن للمواسم الانتقالية، تتميز بأزرار مذهبة وتصميم عصري متقن.',
+        tag: ''
+      }
+    ];
+
+    /* App State */
+    let cart = [];
+    let wishlist = [];
+    let currentCurrency = 'AED';
+    const currencyRates = {
+      AED: { rate: 1, symbol: 'د.إ' },
+      SAR: { rate: 1.02, symbol: 'ر.س' },
+      USD: { rate: 0.27, symbol: '$' }
+    };
+
+    /* Format Price Function */
+    function formatPrice(amountInAED) {
+      const curr = currencyRates[currentCurrency];
+      const converted = (amountInAED * curr.rate).toFixed(0);
+      return `${converted} ${curr.symbol}`;
+    }
+
+    /* Render Product Grid */
+    function renderProducts(categoryFilter = 'all') {
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = '';
+
+      const filtered = categoryFilter === 'all' 
+        ? PRODUCTS 
+        : PRODUCTS.filter(p => p.category === categoryFilter);
+
+      filtered.forEach(p => {
+        const isWishlist = wishlist.includes(p.id);
+        const cardHtml = `
+          <div class="product-card group bg-brand-card rounded border border-brand-border overflow-hidden flex flex-col justify-between smooth-transition gold-glow">
+            <div class="relative aspect-[4/5] overflow-hidden bg-brand-dark cursor-pointer" onclick="openQuickView('${p.id}')">
+              ${p.tag ? `<span class="absolute top-3 right-3 bg-brand-gold text-brand-dark text-[10px] font-bold px-2 py-0.5 rounded z-10">${p.tag}</span>` : ''}
+              <button onclick="event.stopPropagation(); toggleWishlist('${p.id}')" class="absolute top-3 left-3 bg-brand-dark/80 hover:bg-brand-gold text-brand-gold hover:text-brand-dark w-8 h-8 rounded-full flex items-center justify-center z-10 smooth-transition">
+                <i class="${isWishlist ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+              </button>
+              <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover object-center group-hover:scale-108 smooth-transition duration-700">
+              <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 smooth-transition flex items-center justify-center">
+                <span class="bg-brand-card border border-brand-gold text-brand-goldLight text-xs px-4 py-2 rounded font-bold shadow-lg">نظرة سريعة</span>
+              </div>
+            </div>
+
+            <div class="p-5 flex flex-col flex-grow justify-between">
+              <div>
+                <h3 class="text-white font-bold text-sm mb-1 line-clamp-1 hover:text-brand-gold cursor-pointer" onclick="openQuickView('${p.id}')">${p.title}</h3>
+                <p class="text-brand-muted text-xs line-clamp-2 mb-3">${p.description}</p>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center mb-3">
+                  <span class="text-brand-goldLight font-bold text-base">${formatPrice(p.priceAED)}</span>
+                  <span class="text-[10px] text-brand-muted">مقاسات: S, M, L, XL</span>
+                </div>
+
+                <button onclick="addToCart('${p.id}', 'M')" class="w-full bg-brand-dark hover:bg-brand-gold text-brand-gold hover:text-brand-dark border border-brand-border hover:border-brand-gold font-bold py-2 rounded text-xs smooth-transition flex items-center justify-center gap-2">
+                  <i class="fa-solid fa-plus"></i> إضافة للسلة
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        grid.insertAdjacentHTML('beforeend', cardHtml);
+      });
+    }
+
+    /* Filter Handler */
+    function filterProducts(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-gold', 'text-brand-dark', 'font-bold');
+        btn.classList.add('bg-brand-card', 'text-brand-text');
+      });
+      event.target.classList.remove('bg-brand-card', 'text-brand-text');
+      event.target.classList.add('bg-brand-gold', 'text-brand-dark', 'font-bold');
+      
+      renderProducts(category);
+    }
+
+    /* Wishlist Toggle */
+    function toggleWishlist(id) {
+      if (wishlist.includes(id)) {
+        wishlist = wishlist.filter(item => item !== id);
+      } else {
+        wishlist.push(id);
+      }
+      updateBadges();
+      renderProducts();
+    }
+
+    /* Add to Cart Logic */
+    function addToCart(id, size = 'M') {
+      const existingIndex = cart.findIndex(item => item.id === id && item.size === size);
+      if (existingIndex > -1) {
+        cart[existingIndex].qty += 1;
+      } else {
+        const p = PRODUCTS.find(prod => prod.id === id);
+        cart.push({ ...p, size: size, qty: 1 });
+      }
+      updateBadges();
+      renderCartDrawer();
+      toggleCartDrawer(true);
+    }
+
+    /* Update Cart Quantities */
+    function updateCartQty(index, change) {
+      cart[index].qty += change;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      updateBadges();
+      renderCartDrawer();
+    }
+
+    /* Render Cart Items */
+    function renderCartDrawer() {
+      const list = document.getElementById('cartItemsList');
+      const subtotalEl = document.getElementById('cartSubtotal');
+      list.innerHTML = '';
+
+      if (cart.length === 0) {
+        list.innerHTML = `
+          <div class="text-center py-12">
+            <i class="fa-solid fa-bag-shopping text-brand-muted text-4xl mb-3 opacity-40"></i>
+            <p class="text-brand-muted text-sm">سلة التسوق فارغة حالياً.</p>
+          </div>
+        `;
+        subtotalEl.textContent = formatPrice(0);
+        return;
+      }
+
+      let total = 0;
+      cart.forEach((item, idx) => {
+        total += item.priceAED * item.qty;
+        const itemHtml = `
+          <div class="flex gap-3 bg-brand-card/60 border border-brand-border p-3 rounded items-center">
+            <img src="${item.image}" alt="${item.title}" class="w-16 h-16 object-cover rounded">
+            <div class="flex-1">
+              <h4 class="text-xs font-bold text-white line-clamp-1">${item.title}</h4>
+              <p class="text-[10px] text-brand-muted">المقاس: ${item.size}</p>
+              <span class="text-brand-gold text-xs font-bold">${formatPrice(item.priceAED)}</span>
+            </div>
+            <div class="flex items-center gap-2 bg-brand-dark border border-brand-border px-2 py-1 rounded">
+              <button onclick="updateCartQty(${idx}, -1)" class="text-brand-muted hover:text-white text-xs">-</button>
+              <span class="text-xs font-bold text-white px-1">${item.qty}</span>
+              <button onclick="updateCartQty(${idx}, 1)" class="text-brand-muted hover:text-white text-xs">+</button>
+            </div>
+          </div>
+        `;
+        list.insertAdjacentHTML('beforeend', itemHtml);
+      });
+
+      subtotalEl.textContent = formatPrice(total);
+    }
+
+    /* Badges Update */
+    function updateBadges() {
+      const totalQty = cart.reduce((acc, item) => acc + item.qty, 0);
+      document.getElementById('cartBadge').textContent = totalQty;
+      document.getElementById('cartDrawerCount').textContent = `(${totalQty})`;
+
+      const wishBadge = document.getElementById('wishlistBadge');
+      wishBadge.textContent = wishlist.length;
+      if (wishlist.length > 0) wishBadge.classList.remove('hidden');
+      else wishBadge.classList.add('hidden');
+    }
+
+    /* Currency Switch */
+    function changeCurrency(curr) {
+      currentCurrency = curr;
+      renderProducts();
+      renderCartDrawer();
+    }
+
+    /* Cart Drawer Toggle */
+    function toggleCartDrawer(forceOpen = false) {
+      const drawer = document.getElementById('cartDrawer');
+      if (forceOpen) {
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.toggle('hidden');
+      }
+    }
+
+    /* Quick View Modal Logic */
+    function openQuickView(id) {
+      const p = PRODUCTS.find(item => item.id === id);
+      const content = document.getElementById('quickViewContent');
+      content.innerHTML = `
+        <div class="aspect-square bg-brand-dark rounded overflow-hidden">
+          <img src="${p.image}" alt="${p.title}" class="w-full h-full object-cover">
+        </div>
+        <div class="flex flex-col justify-between">
+          <div>
+            <span class="text-brand-gold text-xs font-bold uppercase tracking-widest">${p.category}</span>
+            <h2 class="text-xl font-bold text-white mt-1 mb-2">${p.title}</h2>
+            <div class="text-2xl font-bold text-brand-goldLight mb-4">${formatPrice(p.priceAED)}</div>
+            <p class="text-brand-muted text-xs leading-relaxed mb-6">${p.description}</p>
+            
+            <div class="mb-6">
+              <label class="block text-xs font-bold text-white mb-2">اختر المقاس:</label>
+              <div class="flex gap-2" id="sizeSelector">
+                <button onclick="selectSize(this)" class="size-btn border border-brand-gold bg-brand-gold text-brand-dark font-bold text-xs w-9 h-9 rounded">S</button>
+                <button onclick="selectSize(this)" class="size-btn border border-brand-border hover:border-brand-gold text-white font-bold text-xs w-9 h-9 rounded">M</button>
+                <button onclick="selectSize(this)" class="size-btn border border-brand-border hover:border-brand-gold text-white font-bold text-xs w-9 h-9 rounded">L</button>
+                <button onclick="selectSize(this)" class="size-btn border border-brand-border hover:border-brand-gold text-white font-bold text-xs w-9 h-9 rounded">XL</button>
+              </div>
+            </div>
+          </div>
+
+          <button onclick="addToCart('${p.id}', selectedSize); closeQuickView()" class="w-full bg-brand-gold hover:bg-brand-goldLight text-brand-dark font-bold py-3 rounded text-sm smooth-transition shadow-lg gold-glow">
+            إضافة إلى السلة الآن
+          </button>
+        </div>
+      `;
+      window.selectedSize = 'S';
+      document.getElementById('quickViewModal').classList.remove('hidden');
+    }
+
+    function selectSize(btn) {
+      document.querySelectorAll('.size-btn').forEach(b => {
+        b.classList.remove('bg-brand-gold', 'text-brand-dark', 'border-brand-gold');
+        b.classList.add('border-brand-border', 'text-white');
+      });
+      btn.classList.add('bg-brand-gold', 'text-brand-dark', 'border-brand-gold');
+      window.selectedSize = btn.textContent;
+    }
+
+    function closeQuickView() {
+      document.getElementById('quickViewModal').classList.add('hidden');
+    }
+
+    /* Search Overlay Handler */
+    function toggleSearchModal() {
+      document.getElementById('searchModal').classList.toggle('hidden');
+    }
+
+    function handleSearch(query) {
+      const resultsContainer = document.getElementById('searchResults');
+      if (!query.trim()) {
+        resultsContainer.innerHTML = '<p class="text-xs text-brand-muted text-center py-4">ابحث عن اسم المنتج أو التصميم...</p>';
+        return;
+      }
+
+      const matches = PRODUCTS.filter(p => p.title.includes(query) || p.description.includes(query));
+      if (matches.length === 0) {
+        resultsContainer.innerHTML = '<p class="text-xs text-brand-muted text-center py-4">لم يتم العثور على نتائج مطابقة.</p>';
+        return;
+      }
+
+      resultsContainer.innerHTML = matches.map(m => `
+        <div onclick="openQuickView('${m.id}'); toggleSearchModal()" class="flex items-center gap-3 p-2 bg-brand-dark hover:bg-brand-gold/10 rounded cursor-pointer border border-brand-border">
+          <img src="${m.image}" class="w-10 h-10 object-cover rounded">
+          <div>
+            <h5 class="text-xs font-bold text-white">${m.title}</h5>
+            <span class="text-brand-gold text-xs">${formatPrice(m.priceAED)}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* Mobile Menu Toggle */
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    }
+
+    /* Checkout Flow Handler */
+    function proceedToCheckout() {
+      if (cart.length === 0) {
+        alert('سلة التسوق فارغة.');
+        return;
+      }
+      alert('جاري توجيهك لبوابة الدفع الآمنة الخاصة بمتجر البتين...');
+    }
+
+    /* Newsletter Handler */
+    function handleNewsletter(e) {
+      e.preventDefault();
+      alert('شكراً لانضمامك إلى قائمة نادي البتين الخاص (VIP)! تم تسجيل بريدك بنجاح.');
+      e.target.reset();
+    }
+
+    /* Language Switcher Mock */
+    function toggleLanguage() {
+      const html = document.documentElement;
+      const isArabic = html.getAttribute('dir') === 'rtl';
+      if (isArabic) {
+        html.setAttribute('dir', 'ltr');
+        html.setAttribute('lang', 'en');
+        document.getElementById('langToggleBtn').textContent = 'العربية';
+      } else {
+        html.setAttribute('dir', 'rtl');
+        html.setAttribute('lang', 'ar');
+        document.getElementById('langToggleBtn').textContent = 'English';
+      }
+    }
+
+    /* Init on Load */
+    window.onload = function() {
+      renderProducts();
+      renderCartDrawer();
+    };
+  </script>
+</body>
+</html>
